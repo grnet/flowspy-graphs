@@ -24,6 +24,17 @@ graphs api.
 
 ## Creating the graphs api
 Here we are going to demonstrate how our graphs api was created:
-We store
+In GRNET, we store stats collected via snmp from the network devices into rrd files,
+which are being discovered and stored from a script. Then their name (based on)
+the `junos_name` of the rule in flowspy is hashed into an md5 hash. Then we have
+the following urls:
 
+	url(r'^$', views.list_graphs, name='all_graphs'),
+    url(r'^(?P<graph_hash>\w+)/(?P<hostname>\w+)/(?P<graph_type>\w+)/$', views.list_graphs, name='graphs_type'),
+    url(r'^(?P<graph_hash>\w+)/(?P<hostname>\w+)/$', views.list_graphs, name='host_graphs'),
+    url(r'^(?P<graph_hash>\w+)/$', views.list_graphs, name='graphs'),
+
+in order to serve each graph. The response has the following format:
+
+	{'graphs': [{"type": "bytes", "host": "kolettir.grnet.gr", "hash": "51a8c1d06bb59a0a6aaf4983f04a35b7", "img": "<IMAGE_AS_BASE_64>"}]}
 

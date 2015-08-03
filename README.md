@@ -2,6 +2,8 @@
 A flowspy plugin which can retrieve graphs for flowspec rules and present
 them along with the applied rules.
 
+Works with flowspy v1.3
+
 
 ## Installation
 - `pip install https://github.com/grnet/flowspy-graphs`
@@ -21,6 +23,7 @@ graphs api.
 
 
 ## Creating the graphs api
-Here we are going to demonstrate how our graphs api was created.
+Here we are going to demonstrate how our graphs api was created:
+We store
 
 
